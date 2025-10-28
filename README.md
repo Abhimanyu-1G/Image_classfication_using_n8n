@@ -16,3 +16,13 @@ These are the screenshot of python files for the http server and the watchdog sc
 <img width="795" height="977" alt="image" src="https://github.com/user-attachments/assets/33aaadb1-92c2-44b3-9b72-a54ad8111a35" />
 
 <img width="675" height="504" alt="image" src="https://github.com/user-attachments/assets/9c339e1b-df5c-4e25-87a6-394fb56e9358" />
+
+Example:-
+Image to be classified:-
+
+![bird](https://github.com/user-attachments/assets/4fca2095-5944-473e-bb69-a436167fdcb5)
+
+Predictions:-
+
+<img width="553" height="172" alt="image" src="https://github.com/user-attachments/assets/3743caa2-08bb-4b30-a7f6-0bab37c3253d" />
+
