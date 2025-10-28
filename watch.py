@@ -4,8 +4,8 @@ from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 import requests
 
-folder_to_watch = r"D:\n8n_data\images"
-webhook_url = "https://n8nlocal.abhimanyusinghchouhan.tech/webhook/classify"
+folder_to_watch = r"D:\n8n_data\images"#Change this to your folder
+webhook_url = "https://n8nlocal.abhimanyusinghchouhan.tech/webhook/classify"#use your webhook
 
 class Watcher(FileSystemEventHandler):
     def on_created(self, event):
@@ -45,3 +45,4 @@ try:
 except KeyboardInterrupt:
     observer.stop()
 observer.join()
+
