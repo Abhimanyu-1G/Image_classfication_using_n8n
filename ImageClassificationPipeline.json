@@ -1,0 +1,114 @@
+{
+  "name": "ImageClassificationPipeline",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "classify",
+        "options": {
+          "binaryPropertyName": "data"
+        }
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -160,
+        64
+      ],
+      "id": "56cebb95-c892-44b3-a76e-9dd05fb0dd14",
+      "name": "Webhook",
+      "webhookId": "f5b1744a-52b0-470d-8b70-ef0895167692",
+      "notesInFlow": false
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://host.docker.internal:8000/classify",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "path",
+              "value": "={{ $json.body.image_path }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        64,
+        64
+      ],
+      "id": "7d3c4e1f-8fec-42e6-9339-374eda8d791c",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "chatId": "1731740562",
+        "text": "=Your photo located at ```\n{{ $json.image_path }}``` \nis a ({{ $json.predicted_class }})",
+        "additionalFields": {
+          "appendAttribution": "={{ false }}"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        272,
+        64
+      ],
+      "id": "246d3a62-1d91-4984-a8b2-ab46c53d5c98",
+      "name": "Send a text message",
+      "webhookId": "ffcc346f-a74e-4009-bf8a-8379fb3f8f74",
+      "credentials": {
+        "telegramApi": {
+          "id": "Obu0jGhXF1acIySq",
+          "name": "Telegram account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "736adf11-5919-4ee5-9f88-ac06480e5619",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "27d4a0bef2f6ee94b5dabd2409646ceef397193b623533075073e689acbd9be6"
+  },
+  "id": "vjNPr2ssGX03FPXP",
+  "tags": []
+}
