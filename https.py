@@ -1,3 +1,4 @@
+#This is to fetch the file path and send to the classify.py 
 from fastapi import FastAPI
 from pydantic import BaseModel  # Import BaseModel
 from classify import classify_image
@@ -19,4 +20,5 @@ async def classify(item: ImagePath):
     return result
 
 if __name__ == "__main__":
+
     uvicorn.run(app, host="0.0.0.0", port=8000)
