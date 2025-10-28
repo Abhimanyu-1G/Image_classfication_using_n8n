@@ -1,4 +1,4 @@
-<img width="795" height="977" alt="image" src="https://github.com/user-attachments/assets/14b6d2b2-c47b-4ad5-8fcc-10ef66035885" /># Image_classfication_using_n8n
+# Image_classfication_using_n8n
 In this Mini Project i tried to automate the Image Classification Pipeline for Resnet18 Model.
 Below is the Workflow Screenshot
 <img width="1537" height="707" alt="image" src="https://github.com/user-attachments/assets/22c54226-72bd-415d-8db4-c0181cdbc4c7" />
