@@ -6,7 +6,6 @@ from torchvision import models
 from PIL import Image
 import json
 
-# --- Preload model once ---
 model = models.resnet18(weights=models.ResNet18_Weights.DEFAULT)
 model.eval()
 labels = models.ResNet18_Weights.DEFAULT.meta["categories"]
@@ -24,7 +23,6 @@ transform = transforms.Compose([
 def classify_image(image_path):
     """Return a dictionary with predicted class"""
 
-# ----- ConvNeXt Base (good accuracy, fits 3050) -----
 Weights = models.ConvNeXt_Base_Weights
 weights = Weights.DEFAULT
 model = models.convnext_base(weights=weights).eval()
@@ -60,7 +58,6 @@ except Exception as e:
         return {"error": str(e)}
         return {"image_path": image_path, "error": str(e)}
 
-# Optional: keep standalone execution
 if __name__ == "__main__":
     import sys
     if len(sys.argv) < 2:
@@ -84,5 +81,5 @@ if __name__ == "__main__":
         else:
             outputs.append(classify_top1(p))
 
-    # one dict if single image; else a list of top-1 dicts
     print(json.dumps(outputs[0] if len(outputs) == 1 else outputs, ensure_ascii=False, indent=2))
+
